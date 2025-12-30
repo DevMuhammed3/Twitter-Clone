@@ -1,6 +1,9 @@
+import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import authRoutes from './modules/auth/auth.routes'
+
 
 const app = express()
 const port = 4000
@@ -16,6 +19,8 @@ app.use(cookieParser())
 app.get('/health', (_, res) => {
   res.json({ ok: true })
 })
+
+app.use('/auth', authRoutes)
 
 app.listen(port, () => {
   console.log('Backend running on port 4000')
