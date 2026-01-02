@@ -1,11 +1,14 @@
 import { Router } from 'express'
-import { login, logout, me, register } from './auth.controller'
+import { googleAuth, googleCallback, login, logout, me, register } from './auth.controller'
 import { requireAuth } from '../../middlewares/auth.middleware'
 
 const router = Router()
 
 router.post('/register', register)
 router.post('/login', login)
+router.get('/google', googleAuth)
+router.get('/google/callback', googleCallback)
+
 router.get('/me', requireAuth, me)
 router.post('/logout', logout)
 
