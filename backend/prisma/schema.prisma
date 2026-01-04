@@ -15,10 +15,20 @@ generator client {
 
 model User {
   id        Int      @id @default(autoincrement())
-  username  String   @unique
   email     String   @unique
+  username  String   @unique
   password  String?
   googleId  String?  @unique
+  tweets    Tweet[]
+  createdAt DateTime @default(now())
+}
+
+
+model Tweet {
+  id        Int      @id @default(autoincrement())
+  content   String
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id])
   createdAt DateTime @default(now())
 }
 
