@@ -4,6 +4,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import authRoutes from './modules/auth/auth.routes'
 import tweetsRoutes from './modules/tweets/tweets.routes'
+import likesRoutes from './modules/likes/likes.routes'
 
 
 
@@ -25,6 +26,7 @@ app.get('/health', (_, res) => {
 app.use('/auth', authRoutes)
 
 app.use('/tweets', tweetsRoutes)
+app.use('/likes', likesRoutes)
 
 app.listen(port, () => {
   console.log('Backend running on port 4000')
