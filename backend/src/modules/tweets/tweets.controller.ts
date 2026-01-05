@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { createTweet, listTweets } from './tweets.service'
+import { createTweet, listTweets, listTweetsByUsername } from './tweets.service'
 
 export async function postTweet(req: Request, res: Response) {
   const userId = req.user?.id
@@ -22,3 +22,13 @@ export async function getTimeline(_: Request, res: Response) {
   return res.json({ tweets })
 }
 
+export async function getUserTweets(req: Request, res: Response) {
+  const { username } = req.params
+
+  if (!username) {
+    return res.status(400).json({ message: 'Username is required' })
+  }
+
+  const tweets = await listTweetsByUsername(username)
+  return res.json({ tweets })
+}

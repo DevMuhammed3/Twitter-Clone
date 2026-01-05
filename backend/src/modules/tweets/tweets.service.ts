@@ -29,3 +29,13 @@ export async function listTweets() {
   })
 }
 
+export async function listTweetsByUsername(username: string) {
+  return prisma.tweet.findMany({
+    where:{
+      author:{
+        username,
+      },
+    },
+    orderBy: {createdAt: 'desc'}
+  })
+}
