@@ -6,7 +6,7 @@ import authRoutes from './modules/auth/auth.routes'
 import tweetsRoutes from './modules/tweets/tweets.routes'
 import likesRoutes from './modules/likes/likes.routes'
 import followsRoutes from './modules/follows/follows.routes'
-
+import timelineRoutes from './modules/timeline/timeline.routes'
 
 
 const app = express()
@@ -29,6 +29,7 @@ app.use('/auth', authRoutes)
 app.use('/tweets', tweetsRoutes)
 app.use('/likes', likesRoutes)
 app.use('/follows', followsRoutes)
+app.use('/timeline', timelineRoutes)
 
 app.listen(port, () => {
   console.log('Backend running on port 4000')
